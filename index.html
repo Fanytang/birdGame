@@ -26,15 +26,18 @@
 				<img src="img/pipe.png" style="margin-bottom: 150px;" />
 				<img src="img/pipe.png" />
 			</div>
+			<div style="position: absolute;"><span  value="开始" style="font-size: 20px; font-family: '微软雅黑';color: red;z-index: 1;">分数：</span><span id="fenshu" style="font-size: 18px;color: red;"></span></div>
 			<div id="gameover" style="font-family: '微软雅黑';margin-left: 300px; margin-top: 150px;color: red;position: absolute;z-index: 1;">
 				<h1>Game Over！！！</h1>
-				<input type="button" value="再来一次" onclick="replay()" style="font-family: '微软雅黑';font-size: 20px;margin-left: 300px; margin-top: 200px;color: red;position: absolute;z-index: 1; "/>
+				<input type="button" value="再来一次" onclick="replay()" style="font-family: '微软雅黑';font-size: 20px;margin-left: 300px; margin-top: 200px;color: red;position: absolute; "/>
+
 			</div>
 			<div id="score" style="font-family: '微软雅黑';font-size: 20px; margin-left: 350px;margin-top: 250px;color: red;position: absolute;z-index: 1;">
 			
 			</div>
 
 		</div>
+		<div style="font-size: 20px;font-weight: 800;color: green;">暂不支持移动端！</div>
 
 	</body>
 
@@ -59,7 +62,7 @@
 
 	var birdobj = {
 		x: 100,
-		y: 300,
+		y: 100,
 		mx: 0,
 		my: 2,
 
@@ -149,6 +152,7 @@
 		birdobj.fly();
 		birdobj.draw();
 		birdobj.move();
+		document.getElementById('fenshu').innerHTML = count;
 
 		for(var i = 0; i < guans.length; i++) {
 			guans[i].move();
@@ -171,7 +175,7 @@
 	}, 30);
 
 	function isRect(x1, y1, w1, h1, x2, y2, w2, h2) {
-		if(x1 <= x2 && x1 + w1 <= x2) {
+		if(x1 <= x2 && x1 + w1 <= x2&&y1<=475) {
 			return false;
 		} else if(x1 >= x2 && x1 >= x2 + w2) {
 			return false;
@@ -181,7 +185,7 @@
 			return false;
 		}
 		return true;
-	}
+	};
 
 	gameover.style.display = 'none';
 
